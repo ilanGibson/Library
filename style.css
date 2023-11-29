@@ -1,0 +1,27 @@
+body {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+}
+
+button, #submit {
+    font-size: 25px;
+    height: 100px;
+    width: 300px;
+    border-radius: 100px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+dialog {
+    margin-top: 20px;
+    border: none;
+    text-align: center;
+}
+
+#close, #submit {
+    height: 50px;
+    width: 150px;
+    margin-top: 50px;
+}

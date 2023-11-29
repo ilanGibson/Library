@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <button id="show_lib_button">Show Library</button>
+    <button id="add_book">Add Book</button>
+    <dialog id="dialog">
+        <p>Lets add a book to that collection!</p>
+        <form method="dialog">
+            <label for="title">Title:</label>
+            <input class=user_input type="text" id="title" name="title" required>
+            <label for="author">Author:</label>
+            <input class="user_input" type="text" id="author" name="author" required>
+            <label for="pages">Page Count:</label>
+            <input type="number" id="pages" name="pages" min="1" value="1" def required>
+            <label for="read">Have you read this book?</label>
+            <select id="read" name="read">
+                <option value="true">have read</option>
+                <option value="false">have not read</option>
+            </select>
+            <br>
+            <input id="submit" type="submit" value="Submit">
+            <button id="close">Close</button>
+        </form>
+    </dialog>
+    <div id="library">
+    </div>
+</body>
+</html>
