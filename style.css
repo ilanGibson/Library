@@ -4,6 +4,10 @@ body {
     font-size: 25px;
 }
 
+div {
+    margin-top: 25px;
+}
+
 button, #submit {
     font-size: 25px;
     height: 100px;
@@ -24,4 +28,14 @@ dialog {
     height: 50px;
     width: 150px;
     margin-top: 50px;
+}
+
+#library div button {
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    height: 50px;
+    width: 120px;
+    border-radius: 0;
+    margin-left: 10px;
 }

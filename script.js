@@ -1,4 +1,4 @@
-const myLibrary = [{title: "Catching Fire", author: "temp", pages: 100, read: false}, {title: "Diary of a Wimpy Kid", author: "temp", pages: 50, read: true}];
+let myLibrary = [{title: "Catching Fire", author: "temp", pages: 100, read: false}, {title: "Diary of a Wimpy Kid", author: "temp", pages: 50, read: true}];
 let library = document.getElementById("library");
 let library_div = library.querySelectorAll("div");
 let show_lib = document.getElementById("show_lib_button");
@@ -40,6 +40,7 @@ function addBookToLibrary(event) {
     let temp_book = new Book(title.value, author.value, pages.value, read.value);
     myLibrary.push(temp_book);
     resetDialog();
+    listMyLibrary();
 
 }
 
@@ -49,9 +50,46 @@ function listMyLibrary() {
         let newDiv = document.createElement("div");
         newDiv.innerHTML += `${book.title} by ${book.author} is ${book.pages} pages long. You ${have_or_havent(book.read)} read it.`;
         newDiv.classList = (book.title);
+        let deleteBookButton = addDeleteBookButton(book.title);
+        newDiv.appendChild(deleteBookButton);
+        let changeReadButton = addChangeReadButton(book.title);
+        newDiv.appendChild(changeReadButton);
         library.appendChild(newDiv);
         library_div = library.querySelectorAll("div");
     });
+}
+
+function addDeleteBookButton(title) {
+    let deleteBookButton = document.createElement("button");
+    deleteBookButton.innerHTML = ("Delete Book");
+    deleteBookButton.classList = (title);
+    deleteBookButton.addEventListener("click", function() {
+        popBook(title);
+    });
+    return (deleteBookButton);
+}
+
+function popBook(title) {
+    myLibrary = myLibrary.filter(book => book.title !== title);
+    console.log(title);
+    clearLibrary();
+}
+
+function addChangeReadButton(title) {
+    let changeReadButton = document.createElement("button");
+    changeReadButton.innerHTML = ("Change read status");
+    changeReadButton.classList = (title);
+    changeReadButton.addEventListener("click", function() {
+        changeReadStatus(title);
+    });
+    return (changeReadButton);
+}
+
+function changeReadStatus(title) {
+    let bookToChange = myLibrary.findIndex(item => item.title === title);
+    let currentStatus = myLibrary[bookToChange].read;
+    myLibrary[bookToChange].read = !currentStatus;
+    listMyLibrary();
 }
 
 function clearLibrary() {
